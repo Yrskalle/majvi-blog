@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_ckeditor import CKEditor
 from datetime import date
 from functools import wraps
+import os
 
 
 # **********---------- OWN IMPORTS ----------**********
@@ -21,7 +22,8 @@ app.config["SECRET_KEY"] = "333333338888888800000000"
 Bootstrap(app)
 
 # **********---------- DATABASE ----------**********
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a/database_9nnd'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
