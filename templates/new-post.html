@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block contents %}
+<h1>Nytt blogginlägg</h1>
+
+{{ ckeditor.load() }}
+{{ ckeditor.config(name='body') }}
+{{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+<a href="{{ url_for('home') }}" class="btn btn-secondary">Avbryt</a>
+
+{% endblock contents %}

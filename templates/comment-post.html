@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block contents %}
+<h1>Kommentera blogginlägg</h1>
+
+{{ ckeditor.load() }}
+{{ ckeditor.config(name='body') }}
+{{ wtf.quick_form(form, novalidate=True, button_map={"submit": "info"}) }}
+<a href="{{ url_for('show_post', post_id=post_id) }}" class="btn btn-outline-info">Avbryt</a>
+
+{% endblock contents %}

@@ -1,0 +1,65 @@
+body {
+    background-color: #F8EDE3;
+}
+
+h1 {
+    font-family: 'Norican', cursive;
+    color: #9D3C72;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar{
+    background-color: #7B2869 !important;
+}
+
+.comment {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.navbar-brand{
+    font-family: 'Norican', cursive;
+    font-size: 25px;
+    color: #FFBABA;
+    margin: 0px 25px 0px 25px;
+}
+
+.card-header{
+    background-color: #C85C8E;
+    color: #F8EDE3;
+}
+
+.main-div {
+  margin: 0px;
+}
+
+.card {
+  width: 600px;
+  margin: 25px auto 25px;
+}
+
+.divform {
+  width: 600px;
+  margin: 25px auto 25px;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+input {
+  margin: 0.5rem 0rem 0.5rem;
+}
+
+.alert {
+width: 500 !important;
+}
+
+.login {
+    color: white;
+}
