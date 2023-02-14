@@ -8,6 +8,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_ckeditor import CKEditor
 from datetime import date
 from functools import wraps
+
+from flask_wtf import CSRFProtect
+
 import os
 
 
@@ -19,11 +22,17 @@ from forms import RegisterForm, LoginForm, PostForm, CommentForm
 # **********---------- APP ----------**********
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "333333338888888800000000"
+# app.config["SECRET_KEY"] = os.environ.get("APP_CONFIG_SECRET_KEY")
+# print(os.getenv("APP_CONFIG_SECRET_KEY"))
+# print(os.environ)
 Bootstrap(app)
+csrf = CSRFProtect(app)
 
 # **********---------- DATABASE ----------**********
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a/database_9nnd'
+POSTGRES_DATABASE_EXTERNAL = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a.frankfurt-postgres.render.com/database_9nnd'
+POSTGRES_DATABASE_INTERNAL = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a/database_9nnd'
+app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRES_DATABASE_EXTERNAL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -338,3 +347,10 @@ if __name__ == "__main__":
     app.run()
     # app.run(debug=True)
     # app.run(host='0.0.0.0', port = 5000)
+
+# TODO: Titles on the different sides.
+# TODO: Mobile version - Navbar ugly with logged in as...
+# TODO: Mobile version - Div to wide. Needs to be adjusted for mobile.
+# TODO: Be able to change password
+# TODO: Site contact
+# TODO: Site About
