@@ -21,17 +21,13 @@ from forms import RegisterForm, LoginForm, PostForm, CommentForm
 
 # **********---------- APP ----------**********
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "333333338888888800000000"
-# app.config["SECRET_KEY"] = os.environ.get("APP_CONFIG_SECRET_KEY")
-# print(os.getenv("APP_CONFIG_SECRET_KEY"))
-# print(os.environ)
+SECRET_KEY = os.getenv("SECRET_KEY")
+app.config["SECRET_KEY"] = SECRET_KEY
 Bootstrap(app)
 csrf = CSRFProtect(app)
 
 # **********---------- DATABASE ----------**********
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
-POSTGRES_DATABASE_EXTERNAL = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a.frankfurt-postgres.render.com/database_9nnd'
-# POSTGRES_DATABASE_INTERNAL = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a/database_9nnd'
 POSTGRES_DATABASE_INTERNAL = os.getenv("POSTGRES_DATABASE_INTERNAL")
 app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRES_DATABASE_INTERNAL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
