@@ -31,7 +31,8 @@ csrf = CSRFProtect(app)
 # **********---------- DATABASE ----------**********
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 POSTGRES_DATABASE_EXTERNAL = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a.frankfurt-postgres.render.com/database_9nnd'
-POSTGRES_DATABASE_INTERNAL = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a/database_9nnd'
+# POSTGRES_DATABASE_INTERNAL = 'postgresql://database_9nnd_user:noMrsdbrvjNZEEAe1Ga6KX7PwGNhHPw1@dpg-cfl0vhpmbjsn9efc6a10-a/database_9nnd'
+POSTGRES_DATABASE_INTERNAL = os.getenv("POSTGRES_DATABASE_INTERNAL")
 app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRES_DATABASE_INTERNAL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
