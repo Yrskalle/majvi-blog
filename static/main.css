@@ -39,13 +39,12 @@ h1 {
 }
 
 .card {
-  width: 600px;
   margin: 25px auto 25px;
 }
 
-.divform {
-  width: 600px;
-  margin: 25px auto 25px;
+.col-aligncenter {
+    float: none;
+    margin: 0 auto;
 }
 
 label {

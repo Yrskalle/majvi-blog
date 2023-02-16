@@ -21,14 +21,22 @@ from forms import RegisterForm, LoginForm, PostForm, CommentForm
 
 # **********---------- APP ----------**********
 app = Flask(__name__)
+# Offline version: -----> app.config["SECRET_KEY"] = "secretkeyhere"
+# Online version: -----> SECRET_KEY = os.getenv("SECRET_KEY")
 SECRET_KEY = os.getenv("SECRET_KEY")
 app.config["SECRET_KEY"] = SECRET_KEY
 Bootstrap(app)
 csrf = CSRFProtect(app)
 
+
 # **********---------- DATABASE ----------**********
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 POSTGRES_DATABASE_INTERNAL = os.getenv("POSTGRES_DATABASE_INTERNAL")
+
+# Put POSTGRES_DATABASE_EXTERNAL here:
+# Offline version: -----> app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRES_DATABASE_EXTERNAL
+
+# Online version: -----> app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRES_DATABASE_INTERNAL
 app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRES_DATABASE_INTERNAL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
